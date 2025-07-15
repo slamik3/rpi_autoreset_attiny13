@@ -17,6 +17,8 @@ long secondsWithoutHeartbeat = 0;
 int failedResets = 0;
 bool permanentFailure = false;
 
+
+
 void setup() {
   // Nastavení pinů
   pinMode(MOSFET_PIN, OUTPUT);
@@ -38,6 +40,8 @@ void setup() {
     delay(1000);
   }
 }
+
+
 
 void loop() {
   if (permanentFailure) {
@@ -86,10 +90,14 @@ void loop() {
   }
 }
 
+
+
 // ISR pro externí přerušení na INT0 (PB1)
 ISR(INT0_vect) {
   heartbeatReceived = true;
 }
+
+
 
 // Signalizace trvalé chyby – 3× bliknutí každých 5 sekund
 void signalPermanentFailure() {
